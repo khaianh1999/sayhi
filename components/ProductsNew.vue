@@ -1,9 +1,9 @@
 <template>
     <div id="products_new">
-        <div class="container mx-auto py-4 lg:py-8">
+        <div class="container mx-auto py-4 md:py-8">
             <div class="mx-4 xl:mx-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 <div class="col-span-2 md:col-span-3 lg:col-span-4 font-bold text-2xl">
-                    Sản phẩm mới <span class="text-main animate-ping">new</span>
+                    Sản phẩm mới <span class="text-red-600 animate-ping">new</span>
                 </div>
                 <div class="col-span-1" v-for="(product,index) in productsNew" :key="index">
                     <div class="w-full overflow-hidden relative group rounded-xl">

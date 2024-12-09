@@ -26,13 +26,13 @@ export default {
     background-position: center;
 }
 ._banner_1 {
-    background-image: url('~assets/images/banner1.jpeg');
+    background-image: url('~assets/images/bannerday.png');
 }
 ._banner_2 {
-    background-image: url('~assets/images/banner2.jpeg');
+    background-image: url('~assets/images/banner1.png');
 }
 ._banner_3 {
-    background-image: url('~assets/images/banner2.jpeg');
+    background-image: url('~assets/images/banner1.png');
 }
 </style>
 
