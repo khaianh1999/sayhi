@@ -41,3 +41,6 @@ html {
 .max-w-screen-xl {
     max-width: 1170px;
 }
+.shadow-text {
+    text-shadow: 2px 2px gray;
+}
