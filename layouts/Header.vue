@@ -69,16 +69,20 @@
         </header>
     <Login />
     <Register />
+    <VerifySms />
     </div>  
 </template>
 
 <script>
 import Login from "./modal/Login.vue";
 import Register from "./modal/Register.vue";
+import VerifySms from "./modal/VerifySms.vue";
+
 export default {
     components: {
         Login,
         Register,
+        VerifySms,
     },
 
 }

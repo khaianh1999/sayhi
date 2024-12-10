@@ -6,7 +6,7 @@
         <div class="relative rounded-lg shadow bg-gradient-to-r from-[#ffd6d6] to-main">
             <div class="flex items-center overflow-hidden">
                 <div class="hidden md:block w-[400px] h-auto">
-                    <img class="rounded-tl-lg rounded-bl-lg" src="@/assets/images/banner2.jpeg" alt="img">
+                    <img class="rounded-tl-lg rounded-bl-lg" src="@/assets/images/banner1.png" alt="img">
                 </div>
                 <div class="w-[400px] h-auto">
                     <!-- Modal header -->
@@ -23,22 +23,26 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-4 md:p-5">
-                        <form class="space-y-4" action="#">
+                        <form class="space-y-4" @submit.prevent="register">
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Nhập email của bạn</label>
-                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" placeholder="name@company.com" required />
+                                <label for="full_name" class="block mb-2 text-sm font-medium text-gray-900">Nhập tên của bạn</label>
+                                <input type="text" name="full_name" id="full_name" maxlength="20" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" placeholder="name@company.com" required />
                             </div>
                             <div>
-                                <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Nhập số điện thoại của bạn</label>
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Nhập email</label>
+                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" placeholder="name@company.com" />
+                            </div>
+                            <div>
+                                <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Nhập số điện thoại</label>
                                 <input type="number" name="number" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" placeholder="0333544xxx" required />
                             </div>
                             <div>
                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Mật khẩu</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" required />
                             </div>
-                            <button type="submit" class="w-full text-white bg-main hover:bg-[#ffd6d6] hover:text-main border-[1px] border-white focus:ring-1 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Đăng nhập</button>
+                            <button type="submit" class="w-full text-white bg-main hover:bg-[#ffd6d6] hover:text-main border-[1px] border-white focus:ring-1 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Đăng ký</button>
                             <div class="flex items-center justify-between text-sm font-normal text-gray-900">
-                                Đã có tài khoản? <div class="text-white shadow-text cursor-pointer" data-modal-hide="authentication-register-modal" data-modal-target="authentication-modal" data-modal-open="authentication-modal">Đăng nhập</div>
+                                Đã có tài khoản? <div class="text-white shadow-text cursor-pointer" data-modal-hide="authentication-register-modal" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">Đăng nhập</div>
                             </div>
                         </form>
                     </div>
@@ -50,8 +54,50 @@
 </template>
 
 <script>
+const expire1Hour = 60 * 60;
 export default {
+    name: "Register",
+    data() {
+        return {
+            phone: null,
+            password: null,
+            remember: false,
+        };
+    },
 
+    mounted() { 
+    },
+
+    methods: {
+        register() {
+            // Call api register
+            if (true) {
+                // Thành công bắn sms -> chuyển sang modal xác thực
+                // Tắt popup đăng ký 
+                const modal = document.querySelector('[data-modal-hide="authentication-register-modal"]');
+                if (modal) {
+                    const targetModal = modal.closest('#authentication-register-modal');
+                    if (targetModal) {
+                        targetModal.classList.add('hidden');
+                    }
+                }
+                console.log('modal', modal);
+                
+                return;
+                // Mở popup xác thực
+                const modalVerify = document.querySelector('#authentication-verify-sms-modal');
+                modalVerify.classList.remove('hidden');
+                return;
+                if (modalVerify) {
+                    const targetModal = modalVerify.closest('#authentication-verify-sms-modal');
+                    if (targetModal) {
+                        targetModal.classList.remove('hidden');
+                    }
+                }
+               
+            }
+        },
+    },
 }
 </script>
 

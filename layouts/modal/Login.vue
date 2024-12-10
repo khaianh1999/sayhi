@@ -6,11 +6,11 @@
         <div class="relative rounded-lg shadow bg-gradient-to-r from-[#ffd6d6] to-main">
             <div class="flex items-center overflow-hidden">
                 <div class="hidden md:block w-[400px] h-auto">
-                    <img class="rounded-tl-lg rounded-bl-lg" src="@/assets/images/banner2.jpeg" alt="img">
+                    <img class="rounded-tl-lg rounded-bl-lg" src="@/assets/images/banner1.png" alt="img">
                 </div>
                 <div class="w-[400px] h-auto">
                     <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 md:p-5 border-b border-gray-600">
+                    <div class="flex items-center justify-between p-4 md:p-5">
                         <h3 class="text-xl font-semibold text-white shadow-text">
                             Đăng nhập
                         </h3>
@@ -23,19 +23,19 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-4 md:p-5">
-                        <form class="space-y-4" action="#">
+                        <form class="space-y-4" @submit.prevent="login">
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Nhập email của bạn</label>
-                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" placeholder="name@company.com" required />
+                                <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Nhập số điện thoại của bạn</label>
+                                <input type="number" v-model="phone" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" placeholder="0333544xxx" required />
                             </div>
                             <div>
                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Mật khẩu</label>
-                                <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" required />
+                                <input type="password" v-model="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-white focus:border-main block w-full p-2.5" required />
                             </div>
                             <div class="flex justify-between">
                                 <div class="flex items-start">
                                     <div class="flex items-center h-5">
-                                        <input id="remember" type="checkbox" value="" class="cursor-pointer w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-0 focus:bg-main" required />
+                                        <input id="remember" type="checkbox" v-model="remember" class="cursor-pointer w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-0 focus:bg-main" />
                                     </div>
                                     <label for="remember" class="ms-2 text-sm font-medium text-gray-900 ">Remember me</label>
                                 </div>
@@ -43,7 +43,7 @@
                             </div>
                             <button type="submit" class="w-full text-white bg-main hover:bg-[#ffd6d6] hover:text-main border-[1px] border-white focus:ring-1 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Đăng nhập</button>
                             <div class="flex items-center justify-between text-sm font-normal text-gray-900">
-                                Chưa đăng ký? <div class="text-white shadow-text cursor-pointer" data-modal-hide="authentication-modal" data-modal-target="authentication-register-modal" data-modal-open="authentication-register-modal">Tạo tài khoản</div>
+                                Chưa đăng ký? <div class="text-white shadow-text cursor-pointer" data-modal-hide="authentication-modal" data-modal-target="authentication-register-modal" data-modal-toggle="authentication-register-modal">Tạo tài khoản</div>
                             </div>
                         </form>
                     </div>
@@ -55,11 +55,47 @@
 </template>
 
 <script>
+const expire1Hour = 60 * 60;
 export default {
+    name: "Login",
+    data() {
+        return {
+            phone: null,
+            password: null,
+            remember: false,
+        };
+    },
 
+    mounted() {
+    },
+
+    methods: {
+        login() {
+            // Call api login
+            if (true) {
+                // Nếu chọn remember thì lưu token 1 tháng 
+                if (this.remember) {
+                    this.$cookies.set('access_token', 'khải đẹp trai quá', {
+                        path: "/",
+                        maxAge: expire1Hour * 24 * 30, // 30 days
+                    });
+                }
+                // Tắt popup đăng nhập 
+                const modalElement = document.getElementById('authentication-modal');
+                // Initialize modal using Flowbite (nếu cần)
+                const modal = new Modal(modalElement);
+                // Open modal
+                // modal.show();
+                // Close modal
+                modal.hide();
+            }
+        },
+    },
 }
 </script>
 
-<style>
-
+<style lang="css" scoped>
+    [type=checkbox]:checked {
+        background-color: #ff7675;
+    }
 </style>

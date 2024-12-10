@@ -16,7 +16,8 @@
                             0: { items: 1 },
                         }"
                         >
-                        <img class="w-full h-full" src="@/assets/images/bannerday.png" alt="img">
+                        <img class="w-full h-full" src="@/assets/images/banner.png" alt="img">
+                        <img class="w-full h-full" src="@/assets/images/banner1.png" alt="png">
                     </v-carousel>
                 </client-only>
             </div>
@@ -43,13 +44,13 @@ export default {
     background-position: center;
 }
 ._banner_1 {
-    background-image: url('~assets/images/bannerday.png');
+    background-image: url('~assets/images/banner.png');
 }
 ._banner_2 {
-    background-image: url('~assets/images/banner1.png');
+    background-image: url('~assets/images/side1.png');
 }
 ._banner_3 {
-    background-image: url('~assets/images/banner1.png');
+    background-image: url('~assets/images/side2.png');
 }
 </style>
 
