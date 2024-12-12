@@ -44,3 +44,29 @@ html {
 .shadow-text {
     text-shadow: 2px 2px gray;
 }
+
+.modal-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50; /* Đảm bảo modal nằm trên backdrop */
+    overflow-y: auto;
+}
+
+
+.no-scroll {
+    overflow: hidden;
+}
+button.close_modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-center {
+        width: 90%;
+        max-height: 90vh;
+    }
+}

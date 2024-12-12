@@ -1,6 +1,7 @@
 <template>
   <div>
     <Carousel />
+    <CodeSale />
     <MenuBody />
     <ProductsBestSeller />
     <ProductsNew />
@@ -11,6 +12,7 @@
 
 <script>
 import Carousel from "../components/Carousel.vue";
+import CodeSale from "../components/CodeSale.vue";
 import MenuBody from "../components/MenuBody.vue";
 import ProductsNew from "../components/ProductsNew.vue";
 import ProductsBestSeller from "../components/ProductsBestSeller.vue";
@@ -21,6 +23,7 @@ export default {
   layout: "Main",
   components: {
     Carousel,
+    CodeSale,
     MenuBody,
     ProductsNew,
     ProductsBestSeller,

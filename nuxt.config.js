@@ -28,6 +28,7 @@ css: ["@/assets/css/main.css", "@fortawesome/fontawesome-svg-core/styles.css"],
 plugins: [
     '~/plugins/fontawesome.js',
     { src: "~/plugins/carousel.js", ssr: false },
+    '~/plugins/modal.js',
 ],
 
 // Auto import components: https://go.nuxtjs.dev/config-components
