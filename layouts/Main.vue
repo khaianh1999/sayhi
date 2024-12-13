@@ -1,22 +1,25 @@
 <template>
     <div>
-        <HeaderPage />
+        <Header />
         <Nuxt />
-        <FooterPage />
+        <Footer />
+        <Sidebar />
 
     </div>
 </template>
 
 <script>
-import HeaderPage from "./Header";
-import FooterPage from "./Footer";
+import Header from "./Header";
+import Footer from "./Footer";
+import Sidebar from "./Sidebar";
 import main from "~/mixins/main";
 
 export default {
     name: "Main",
     components: {
-        HeaderPage,
-        FooterPage,
+        Header,
+        Footer,
+        Sidebar,
     },
     mixins: [main],
     data() {

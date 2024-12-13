@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button class="py-2 px-3 text-white text-semibold bg-slate-400 rounded outline-none cursor-pointer hover:opacity-50 transition">Thêm vào giỏ hàng</button>
+                        <button class="py-2 px-3 text-white text-semibold bg-slate-400 rounded outline-none cursor-pointer hover:opacity-50 transition" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example">Thêm vào giỏ hàng</button>
                         <button class="py-2 px-3 text-white text-semibold bg-main rounded outline-none cursor-pointer hover:opacity-50 transition">Mua ngay</button>
                     </div>
                     <div>

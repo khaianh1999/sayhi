@@ -60,6 +60,6 @@ export default {
         background: white;
         /* background-size: cover;
         background-position: center;
-        background-image: url('~assets/images/bg_section.webp'); */
+        background-image: url('~assets/images/bg_section.jpg'); */
     }
 </style>

@@ -8,8 +8,37 @@
                         <span class="self-center text-base lg:text-2xl font-semibold whitespace-nowrap dark:text-white">Tiệm nhà kem</span>
                     </a>
                     <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-                        <div data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="cursor-pointer text-gray-800 border-[1px] hover:border-white dark:text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 lg:px-4 lg:py-2 lg:px-5 lg:py-2.5 focus:outline-none transition">Đăng nhập
-                        <font-awesome-icon icon="user" class="text-white" />
+                        <div class="relative cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition">
+                            <font-awesome-icon icon="heart" class="text-white text-xl" />
+                            <span class="absolute text-gray-900 text-xs right-1 bottom-1 font-bold bg-main2 w-3 h-3 leading-3 rounded text-center inline-block">{{getNumHearts}}</span>
+                        </div>   
+                        <div class="relative cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition">
+                            <font-awesome-icon icon="bag-shopping" class="text-white text-xl"/>
+                            <span class="absolute text-gray-900 text-xs right-1 bottom-1 font-bold bg-main2 w-3 h-3 leading-3 rounded text-center inline-block">{{getNumInBag}}</span>
+                        </div>   
+                        <div id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition">
+                            <font-awesome-icon icon="user" class="text-white text-xl" />
+                        </div>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownInformation" class="z-10 hidden divide-y rounded-lg shadow w-44 bg-white shadow-lg">
+                            <div class="px-4 py-3 text-sm text-gray-900">
+                            <div>Giant Boy</div>
+                            <div class="font-medium truncate">khaianhaktb@gmail.com</div>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-200" aria-labelledby="dropdownInformationButton">
+                                <li>
+                                    <div data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"  class="block px-4 py-2 hover:bg-main2 text-gray-900 hover:text-gray-600 cursor-pointer">Đăng nhập</div>
+                                </li>
+                                <li>
+                                    <div  class="block px-4 py-2 hover:bg-main2 text-gray-900 hover:text-gray-600 cursor-pointer">Settings</div>
+                                </li>
+                                <li>
+                                    <div class="block px-4 py-2 hover:bg-main2 text-gray-900 hover:text-gray-600 cursor-pointer">Earnings</div>
+                                </li>
+                            </ul>
+                            <div class="py-2">
+                                <div class="block px-4 py-2 text-sm  hover:bg-main2 text-gray-900 hover:text-gray-600 cursor-pointer">Đăng xuất</div>
+                            </div>
                         </div>
                         <button data-collapse-toggle="mega-menu" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-gray-200  dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
                             <span class="sr-only">Open main menu</span>
@@ -24,33 +53,33 @@
                                 <nuxt-link to="/" class="block py-2 px-3 border-b border-gray-100  bg-transparent md:border-0  md:p-0 text-white md:dark:hover:text-hover dark:hover:text-hover md:dark:hover:bg-transparent dark:border-gray-700 transition" aria-current="page">Trang chủ</nuxt-link>
                             </li>
                             <li>
-                                <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto  bg-transparent md:border-0  md:p-0 dark:text-white md:dark:hover:text-hover  dark:hover:text-hover md:dark:hover:bg-transparent dark:border-gray-700 transition">
+                                <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto  bg-transparent md:border-0  md:p-0 dark:text-white md:hover:text-hover  hover:text-hover md:hover:bg-transparent border-gray-700 transition">
                                     Quà tặng <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
                                 </button>
-                                <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md md:grid-cols-1 bg-main">
-                                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                                        <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
+                                <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-1 text-sm bg-white border border-gray-100 rounded-lg shadow-md bg-main">
+                                    <div class="text-gray-900 md:pb-4 dark:text-white">
+                                        <ul class="" aria-labelledby="mega-menu-dropdown-button">
                                             <li>
-                                                <a href="#" class="text-gray-500 dark:text-gray-400 dark:hover:text-hover transition">
+                                                <div class="block px-4 py-2 cursor-pointer text-gray-900 hover:text-gray-600 transition hover:bg-main2">
                                                     Set quà yêu thương
-                                                </a>
+                                                </div>
                                             </li>
                                             <li>
-                                                <a href="#" class="text-gray-500 dark:text-gray-400 dark:hover:text-hover transition">
+                                                <div class="block px-4 py-2 cursor-pointer text-gray-900 hover:text-gray-600 transition hover:bg-main2">
                                                     Set quà giáng sinh
-                                                </a>
+                                                </div>
                                             </li>
                                             <li>
-                                                <a href="#" class="text-gray-500 dark:text-gray-400 dark:hover:text-hover transition">
+                                                <div class="block px-4 py-2 cursor-pointer text-gray-900 hover:text-gray-600 transition hover:bg-main2">
                                                     Compo cute
-                                                </a>
+                                                </div>
                                             </li>
                                             <li>
-                                                <a href="#" class="text-gray-500 dark:text-gray-400 dark:hover:text-hover transition">
+                                                <div class="block px-4 py-2 cursor-pointer text-gray-900 hover:text-gray-600 transition hover:bg-main2">
                                                     Phụ kiện gói quà
-                                                </a>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -77,12 +106,29 @@
 import Login from "./modal/Login.vue";
 import Register from "./modal/Register.vue";
 import VerifySms from "./modal/VerifySms.vue";
-
+import main from "~/mixins/main";
+import { mapGetters } from "vuex";
 export default {
+    mixins: [main],
     components: {
         Login,
         Register,
         VerifySms,
+    },
+    data() {
+        return {
+        }
+    },
+    computed: {
+        ...mapGetters(["getUser", "getNumHearts", "getMyHearts", "getMyBag", "getNumInBag" ]),
+    },
+    mounted() {
+        // Lấy value từ localstorage set vào store
+        this.$store.dispatch("SET_MY_HEARTS");
+        this.$store.dispatch("SET_MY_BAG");
+    },
+    methods: {
+
     },
 
 }

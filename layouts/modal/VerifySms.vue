@@ -6,7 +6,7 @@
         <div class="relative rounded-lg shadow bg-gradient-to-r from-[#ffd6d6] to-main">
             <div class="flex items-center overflow-hidden">
                 <div class="hidden md:block w-[400px] h-auto">
-                    <img class="rounded-tl-lg rounded-bl-lg" src="@/assets/images/banner1.png" alt="img">
+                    <img class="rounded-tl-lg rounded-bl-lg" src="@/assets/images/banner1.jpg" alt="img">
                 </div>
                 <div class="w-[400px] h-auto">
                     <!-- Modal header -->

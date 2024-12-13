@@ -25,7 +25,7 @@
                         >
                         <div v-for="(product,index) in ProductsBestSeller" :key="index">
                             <div class="w-full overflow-hidden rounded-xl relative group">
-                            <nuxt-link to="/" class="group relative">
+                            <nuxt-link to="/product-detail/1" class="group relative">
                                 <img class="group-hover:brightness-50 group-hover:blur-sm transition rounded-xl" src="https://bizweb.dktcdn.net/thumb/large/100/434/558/products/sp15.jpg?v=1629775088790" alt="img">
                                 <div class="group-hover:opacity-100 opacity-0 absolute top-6 md:top-1/3 left-1/2 -translate-x-1/2 w-4/5 text-center font-bold text-white text-base lg:text-xl">{{product?.name}}</div>
                             </nuxt-link>

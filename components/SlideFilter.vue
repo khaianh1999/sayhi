@@ -32,7 +32,7 @@
         </div>
         </nav>
         <div class="container mx-auto py-4 md:py-8">
-            <div class="grid grid-cols-1 lg:grid-cols-8 gap-5 mx-4 xl:mx-0">
+            <div class="grid grid-cols-1 lg:grid-cols-8 gap-5 mx-4 xl:mx-0 xl:min-h-[calc(100vh-250px)]">
                 <div class="col-span-1 lg:col-span-2">
                     <div class="text-xl font-bold">Danh mục sản phẩm</div>
                     <div class="flex flex-col gap-2 xl:gap-4 mt-2 xl:mt-5">
