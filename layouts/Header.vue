@@ -2,7 +2,7 @@
     <div>
         <header>
             <nav class="border-gray-200 bg-main">
-                <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
+                <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto px-2 xl:px-0 py-4">
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="@/assets/images/logo.png" class="h-8" alt="Logo" />
                         <span class="self-center text-base lg:text-2xl font-semibold whitespace-nowrap dark:text-white">Tiệm nhà kem</span>

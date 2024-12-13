@@ -9,13 +9,13 @@
         
         <div class="mx-4 xl:mx-0 grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="col-span-1 flex items-center h-28 w-full" v-for="(code,index) in codeShort" :key="index">
-                <div class="bg-[#f9e2c7] h-full w-full flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
+                <div class="bg-main2 h-full w-full flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
                     <div class="text-lg font-bold">{{code.title}}
                         <span class="text-sm font-normal">({{code.for_order}})</span>
                     </div>
                     <div class="text-sm text-gray-500 text-left italic">HSD: {{code.end_date}}</div>
                 </div>
-                <div class="code_right relative bg-[#f9e2c7] h-full w-20 flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
+                <div class="code_right relative bg-main2 h-full w-20 flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
                     <div class="text-xs font-semibold">Nhận mã: {{code.code}}</div>
                     <button class="border-none outline-none py-1 px-1 bg-orange-300 text-xs rounded">Lưu mã</button>
                 </div>
@@ -34,13 +34,13 @@
             <hr>
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-5 mt-2 xl:mt-5">
                 <div class="col-span-1 flex items-center h-28 w-full" v-for="(code,index) in codes" :key="index">
-                    <div class="bg-[#f9e2c7] h-full w-full flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
+                    <div class="bg-main2 h-full w-full flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
                         <div class="text-lg font-bold">{{code.title}}
                             <span class="text-sm font-normal">({{code.for_order}})</span>
                         </div>
                         <div class="text-sm text-gray-500 text-left italic">HSD: {{code.end_date}}</div>
                     </div>
-                    <div class="code_right relative bg-[#f9e2c7] h-full w-20 flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
+                    <div class="code_right relative bg-main2 h-full w-20 flex flex-col gap-1 items-center justify-center p-2 rounded-xl border-[1px] border-orange-400">
                         <div class="text-xs font-semibold">Nhận mã: {{code.code}}</div>
                         <button class="border-none outline-none py-1 px-1 bg-orange-300 text-xs rounded">Lưu mã</button>
                     </div>
