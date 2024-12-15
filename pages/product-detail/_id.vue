@@ -16,6 +16,9 @@ export default {
         ProductDetail,
         ProductRelated
     },
+    mounted() {
+        initFlowbite();
+    },
 }
 </script>
   

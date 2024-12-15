@@ -19,16 +19,19 @@ import ProductsBestSeller from "../components/ProductsBestSeller.vue";
 import Reviewer from "../components/Reviewer.vue";
 import Youtube from "../components/Youtube.vue";
 export default {
-  name: 'IndexPage',
-  layout: "Main",
-  components: {
-    Carousel,
-    CodeSale,
-    MenuBody,
-    ProductsNew,
-    ProductsBestSeller,
-    Reviewer,
-    Youtube,
-  },
+    name: 'IndexPage',
+    layout: "Main",
+    components: {
+        Carousel,
+        CodeSale,
+        MenuBody,
+        ProductsNew,
+        ProductsBestSeller,
+        Reviewer,
+        Youtube,
+    },
+    mounted() {
+        initFlowbite();
+    },
 }
 </script>

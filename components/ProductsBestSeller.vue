@@ -29,7 +29,7 @@
                                 <img class="group-hover:brightness-50 group-hover:blur-sm transition rounded-xl" src="https://bizweb.dktcdn.net/thumb/large/100/434/558/products/sp15.jpg?v=1629775088790" alt="img">
                                 <div class="group-hover:opacity-100 opacity-0 absolute top-6 md:top-1/3 left-1/2 -translate-x-1/2 w-4/5 text-center font-bold text-white text-base lg:text-xl">{{product?.name}}</div>
                             </nuxt-link>
-                            <span class="cursor-pointer transition hidden group-hover:flex absolute top-2 right-2 w-7 h-7 rounded bg-main items-center justify-center">
+                            <span @click="setItemsHeartInLocalStorage(product)" class="cursor-pointer transition hidden group-hover:flex absolute top-2 right-2 w-7 h-7 rounded bg-main items-center justify-center" data-drawer-show="drawer-left-example" data-drawer-placement="left" aria-controls="drawer-left-example">
                                 <font-awesome-icon icon="heart" class="text-white" />
                             </span>
                             <div class="bottom-0 absolute left-0 w-full flex items-center justify-around bg-main">

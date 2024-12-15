@@ -12,6 +12,9 @@ export default {
     components: {
         SlideFilter,
     },
+    mounted() {
+        initFlowbite();
+    },
 }
 </script>
   

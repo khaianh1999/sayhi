@@ -50,11 +50,11 @@
                                 <nuxt-link to="/" class="group">
                                     <img class="group-hover:scale-110 transition rounded-xl" src="https://bizweb.dktcdn.net/thumb/large/100/434/558/products/sp15.jpg?v=1629775088790" alt="img">
                                 </nuxt-link>
-                                <span class="cursor-pointer transition hidden group-hover:flex absolute top-2 right-2 w-7 h-7 rounded bg-main items-center justify-center">
+                                <span @click="setItemsHeartInLocalStorage(product)" class="cursor-pointer transition hidden group-hover:flex absolute top-2 right-2 w-7 h-7 rounded bg-main items-center justify-center" data-drawer-show="drawer-left-example" data-drawer-placement="left" aria-controls="drawer-left-example">
                                     <font-awesome-icon icon="heart" class="text-white" />
                                 </span>
                                 <div class="transition group-hover:bottom-0 absolute -bottom-full left-0 w-full flex items-center justify-around bg-main">
-                                    <div class="w-1/2 flex justify-center cursor-pointer text-sm text-white transition hover:scale-105 px-1 py-2 md:px-2 md:py-4 items-center gap-1">
+                                    <div class="w-1/2 flex justify-center cursor-pointer text-sm text-white transition hover:scale-105 px-1 py-2 md:px-2 md:py-4 items-center gap-1" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example">
                                         <font-awesome-icon icon="bag-shopping" class="text-white" transition/>
                                     </div>
                                     |

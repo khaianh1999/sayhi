@@ -10,7 +10,7 @@
                         <nuxt-link to="/product-detail/1" class="group">
                             <img class="group-hover:scale-110 transition rounded-xl" src="https://bizweb.dktcdn.net/thumb/large/100/434/558/products/sp15.jpg?v=1629775088790" alt="img">
                         </nuxt-link>
-                        <span @click="setItemsHeartInLocalStorage(product)" class="cursor-pointer transition hidden group-hover:flex absolute top-2 right-2 w-7 h-7 rounded bg-main items-center justify-center">
+                        <span @click="setItemsHeartInLocalStorage(product)" class="cursor-pointer transition hidden group-hover:flex absolute top-2 right-2 w-7 h-7 rounded bg-main items-center justify-center" data-drawer-show="drawer-left-example" data-drawer-placement="left" aria-controls="drawer-left-example">
                             <font-awesome-icon icon="heart" class="text-white"/>
                         </span>
                         <div class="transition group-hover:bottom-0 absolute -bottom-full left-0 w-full flex items-center justify-around bg-main">

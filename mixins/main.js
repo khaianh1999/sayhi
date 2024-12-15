@@ -43,7 +43,7 @@ export default {
                 // Có sản phẩm rồi thì tăng số lượng lên 
                 const indexOfItem = listItem.findIndex(one => one.id == item.id);        
                 if (indexOfItem == -1) { // không tìm thấy 
-                    localStorage.setItem("mybag", JSON.stringify({data: listItem.concat(item)}));
+                    localStorage.setItem("mybag", JSON.stringify({data: listItem.concat({...item, quantity : 1})}));
                 } else { // Tìm thấy phần tử đã ở vị trí indexOfItem
                     listItem[indexOfItem].quantity += 1;
                     localStorage.setItem("mybag", JSON.stringify({data: listItem}));

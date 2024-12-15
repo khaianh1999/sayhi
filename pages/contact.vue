@@ -31,9 +31,12 @@
 
 <script>
 export default {
-  name: 'ContactPage',
-  layout: "Main",
-  components: {
-  },
+    name: 'ContactPage',
+    layout: "Main",
+    components: {
+    },
+    mounted() {
+        initFlowbite();
+    },
 }
 </script>
