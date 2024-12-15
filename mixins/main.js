@@ -19,7 +19,14 @@ export default {
         setItemsHeartInLocalStorage (item) {
             let listItem = this.getItemsHeartInLocalStorage();
             if (listItem.length) { // Có rồi thì push
-                localStorage.setItem("myhearts", JSON.stringify({data: listItem.concat(item)}));
+                // Kiểm tra item đã có trong danh sách chưa => push || delete
+                const indexOfItem = listItem.findIndex(one => one.id == item.id);  
+                if (indexOfItem == -1) { // không tìm thấy 
+                    localStorage.setItem("myhearts", JSON.stringify({data: listItem.concat(item)}));
+                } else {
+                    listItem = listItem.filter(one => one.id != item.id); // Gỡ khỏi mảng
+                    localStorage.setItem("myhearts", JSON.stringify({data : listItem}));
+                }
             } else { // Chưa có thì tạo
                 localStorage.setItem("myhearts", JSON.stringify({data : [item]}));
             }
@@ -33,15 +40,39 @@ export default {
         setItemsBagInLocalStorage (item) {
             let listItem = this.getItemsBagInLocalStorage();
             if (listItem.length) { // Có rồi thì push
-                localStorage.setItem("mybag", JSON.stringify({data: listItem.concat(item)}));
+                // Có sản phẩm rồi thì tăng số lượng lên 
+                const indexOfItem = listItem.findIndex(one => one.id == item.id);        
+                if (indexOfItem == -1) { // không tìm thấy 
+                    localStorage.setItem("mybag", JSON.stringify({data: listItem.concat(item)}));
+                } else { // Tìm thấy phần tử đã ở vị trí indexOfItem
+                    listItem[indexOfItem].quantity += 1;
+                    localStorage.setItem("mybag", JSON.stringify({data: listItem}));
+                }  
             } else { // Chưa có thì tạo
-                localStorage.setItem("mybag", JSON.stringify({data : [item]}));
+                localStorage.setItem("mybag", JSON.stringify({data : [{...item, quantity : 1}]}));
             }
             this.$store.dispatch("SET_MY_BAG"); // Set lại giá trị trong store
         },
         getItemsBagInLocalStorage () {
             let mybag = localStorage.getItem("mybag");
             return mybag ? JSON.parse(mybag).data : [];
+        },
+        minusItemsBagInLocalStorage (item) {
+            let listItem = this.getItemsBagInLocalStorage();
+            if (listItem.length) {
+                // Trừ đi sản phẩm
+                const indexOfItem = listItem.findIndex(one => one.id == item.id);
+                if (indexOfItem != -1) { // tìm thấy 
+                    if (listItem[indexOfItem].quantity == 1) { // Xoá khỏi listItem
+                        listItem = listItem.filter(one => one.id != item.id);
+                    } else {
+                        listItem[indexOfItem].quantity -= 1;
+                    }
+                    localStorage.setItem("mybag", JSON.stringify({data: listItem}));
+                    
+                }
+                this.$store.dispatch("SET_MY_BAG"); // Set lại giá trị trong store
+            }
         },
 
         getLocalStorageWithExpiry () {

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="sticky top-0 z-10">
         <header>
             <nav class="border-gray-200 bg-main">
                 <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto px-2 xl:px-0 py-4">
@@ -8,13 +8,13 @@
                         <span class="self-center text-base lg:text-2xl font-semibold whitespace-nowrap dark:text-white">Tiệm nhà kem</span>
                     </a>
                     <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-                        <div class="relative cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition">
+                        <div class="relative cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition" data-drawer-target="drawer-left-example" data-drawer-show="drawer-left-example" data-drawer-placement="left" aria-controls="drawer-left-example">
                             <font-awesome-icon icon="heart" class="text-white text-xl" />
-                            <span class="absolute text-gray-900 text-xs right-1 bottom-1 font-bold bg-main2 w-3 h-3 leading-3 rounded text-center inline-block">{{getNumHearts}}</span>
+                            <span v-if="getNumHearts" class="absolute text-gray-900 text-xs right-1 bottom-1 font-bold bg-main2 w-3 h-3 leading-3 rounded text-center inline-block">{{getNumHearts}}</span>
                         </div>   
-                        <div class="relative cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition">
+                        <div class="relative cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" aria-controls="drawer-right-example">
                             <font-awesome-icon icon="bag-shopping" class="text-white text-xl"/>
-                            <span class="absolute text-gray-900 text-xs right-1 bottom-1 font-bold bg-main2 w-3 h-3 leading-3 rounded text-center inline-block">{{getNumInBag}}</span>
+                            <span v-if="getNumInBag" class="absolute text-gray-900 text-xs right-1 bottom-1 font-bold bg-main2 w-3 h-3 leading-3 rounded text-center inline-block">{{getNumInBag}}</span>
                         </div>   
                         <div id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="cursor-pointer text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-1 focus:outline-none transition">
                             <font-awesome-icon icon="user" class="text-white text-xl" />
