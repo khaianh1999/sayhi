@@ -32,10 +32,10 @@
             </v-carousel>
         </client-only>
         <div class="flex justify-center">
-            <form @submit.prevent="" class="w-full md:w-2/3 mt-8 mx-4 xl:mx-auto bg-main p-6 xl:p-12 rounded-tl-[25px] rounded-br-[25px] xl:rounded-tl-[50px] xl:rounded-br-[50px]">
+            <form @submit.prevent="logTelegram" class="w-full md:w-2/3 mt-8 mx-4 xl:mx-auto bg-main p-6 xl:p-12 rounded-tl-[25px] rounded-br-[25px] xl:rounded-tl-[50px] xl:rounded-br-[50px]">
                 <label for="chat" class="font-semibold text-base xl:text-xl mb-1 xl:mb-2 block text-gray-900">Gửi phản hồi cho chúng tôi :</label>
                 <div class="flex items-center">
-                    <input id="chat" rows="1" class="border-gray-100 outline-neutral-100 border-1 focus:border-gray-100 focus:right-0 focus:ring-white block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300" placeholder="Nội dung..."/>
+                    <input id="chat" v-model="message" rows="1" class="border-gray-100 outline-neutral-100 border-1 focus:border-gray-100 focus:right-0 focus:ring-white block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300" placeholder="Nội dung..."/>
                     <button type="submit" class="inline-flex justify-center p-2 rounded-full cursor-pointer">
                         <svg class="w-5 h-5 rotate-90 rtl:-rotate-90 hover:fill-slate-200 transition" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 18 20">
                             <path d="m17.914 18.594-8-18a1 1 0 0 0-1.828 0l-8 18a1 1 0 0 0 1.157 1.376L8 18.281V9a1 1 0 0 1 2 0v9.281l6.758 1.689a1 1 0 0 0 1.156-1.376Z"/>
@@ -52,7 +52,51 @@
 
 <script>
 export default {
+    components: {
+    },
+    data() {
+        return {
+            message: '',
+        }
+    },
+    computed: {
+    },
+    mounted() {
 
+    },
+    methods: {
+        logTelegram() {
+            const botToken = '7494446429:AAEwoKyWgUeIb9FX0baCcffJELc0_E3lZVA';
+            const chatId = '-1002187943904';
+            const message = this.message;
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Message sent successfully:', data);
+                this.message = '';
+            })
+            .catch(error => {
+                console.error('Error sending message:', error);
+            });
+        }
+    },
 }
 </script>
 
