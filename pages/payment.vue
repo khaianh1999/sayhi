@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-span-1 xl:col-span-2 pl-0 xl:pl-8">
                     <div class="text-gray-900 font-bold text-xl py-2">Thông tin người nhận</div>
-                    <form class="mb-6">
+                    <form class="mb-6" @submit.prevent="handleSubmit">
                         <div class="mb-3">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Tên của bạn <span class="text-red-600">*</span></label>
                             <input type="text" id="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 border-gray-600 placeholder-gray-400 focus:ring-main focus:border-main" placeholder="Nguyễn Văn A" required />
@@ -145,6 +145,14 @@
                         </div>
                         <button type="submit" class="text-white bg-main hover:bg-main w-full focus:ring-4 focus:ring-main font-medium rounded-lg text-sm px-5 py-2.5 mb-2 focus:outline-none focus:ring-main block">Thanh toán</button>
                     </form>
+                    <QrCode 
+                        ref="qrCodeComponent"
+                        :accountNumber="'108867652650'"
+                        :accountName="`NGO VAN KHAI`"
+                        :bankCode="'970415'"
+                        :amount="totalPriceInBag"
+                        :addInfo="'THANH TOAN DON HANG'"
+                    />
                 </div>
             </div>
         </div>
@@ -153,6 +161,7 @@
 </template>
 
 <script>
+import QrCode from "../components/QrCode.vue";
 import main from "~/mixins/main";
 import { mapGetters } from "vuex";
 export default {
@@ -160,6 +169,7 @@ export default {
     name: 'PaymentPage',
     layout: "Main",
     components: {
+        QrCode,
     },
     data() {
         return {
@@ -229,6 +239,16 @@ export default {
     },
     mounted() {
         initFlowbite();
+    },
+    methods: {
+        handleSubmit() {
+            // Gọi hàm trong QrCode component qua ref
+            if (this.$refs.qrCodeComponent) {
+                this.$refs.qrCodeComponent.showModal();
+            } else {
+                console.error('Không tìm thấy component QrCode!');
+            }
+        },
     },
 }
 </script>

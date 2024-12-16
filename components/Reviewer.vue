@@ -33,7 +33,7 @@
         </client-only>
         <div class="flex justify-center">
             <form class="w-full md:w-2/3 mt-8 mx-4 xl:mx-auto bg-main p-6 xl:p-12 rounded-tl-[25px] rounded-br-[25px] xl:rounded-tl-[50px] xl:rounded-br-[50px]">
-                <label for="chat" class="font-semibold text-base xl:text-xl mb-1 xl:mb-2 block text-gray-900">Đăng ký email để nhận được ưu đãi:</label>
+                <label for="chat" class="font-semibold text-base xl:text-xl mb-1 xl:mb-2 block text-gray-900">Gửi phản hồi cho chúng tôi :</label>
                 <div class="flex items-center">
                     <input id="chat" rows="1" class="border-gray-100 outline-neutral-100 border-1 focus:border-gray-100 focus:right-0 focus:ring-white block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300" placeholder="Nội dung..."/>
                     <button type="submit" class="inline-flex justify-center p-2 rounded-full cursor-pointer">
