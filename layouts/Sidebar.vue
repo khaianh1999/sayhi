@@ -26,7 +26,7 @@
             </div>
             <div class="grid grid-cols-2 gap-4 mt-2">
                 <div class="cursor-pointer px-4 py-2 text-sm font-medium text-center text-white border border-gray-200 rounded-lg focus:outline-none hover:opacity-50  focus:z-10 focus:ring-4 focus:ring-gray-100 focus:ring-gray-700 bg-gray-400  transition" data-drawer-hide="drawer-right-example" aria-controls="drawer-right-example">Tiếp tục mua</div>
-                <nuxt-link v-if="getMyBag.length" to="/payment" data-drawer-hide="drawer-right-example" class="inline-flex items-center justify-center px-4 py-2 text-xs font-medium bg-main hover:opacity-50 text-center text-white rounded-lg focus:ring-4 focus:ring-blue-300 focus:outline-none transition">Thanh toán <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <nuxt-link v-if="getMyBag.length" to="/payment" data-drawer-hide="drawer-right-example" class="inline-flex items-center justify-center px-4 py-2 text-xs font-medium bg-main hover:opacity-50 text-center text-white rounded-lg focus:ring-4 focus:ring-main focus:outline-none transition">Thanh toán <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
                 </nuxt-link>

@@ -42,12 +42,12 @@
                                 </div>
                                 <div class="w-1/6 text-xs xl:text-base text-gray-900 font-bold text-right">{{convertMoney(item.price)}}</div>
                                
-                                <div class="w-1/6 xl:border-[1px] xl:border-gray-600 flex gap-2 items-center justify-between rounded">
+                                <div class="w-1/6 flex gap-2 items-center justify-between rounded">
                                     <span @click="minusItemsBagInLocalStorage(item)" class="w-6 h-6 text-bold cursor-pointer text-center font-bold">-</span>
                                     <input readonly type="number" v-model="item.quantity" class="!border-none !outline-none !ring-0 font-bold w-6 text-center bg-transparent px-0" >
                                     <span @click="setItemsBagInLocalStorage(item)" class="w-6 h-6 text-bold cursor-pointer text-center font-bold">+</span>
                                 </div>
-                                <div class="w-1/6 flex items-center justify-end"><font-awesome-icon icon="trash" class="text-main text-xl cursor-pointer" /></div>
+                                <div class="w-1/6 flex items-center justify-end"><font-awesome-icon icon="trash" @click="removeItemBagLocalStorage(item)" class="text-main text-xl cursor-pointer" /></div>
                             </div>
                         </div>
                         <div class="flex gap-2 items-center justify font-semibold mt-2">
@@ -64,13 +64,13 @@
                         </div>
                         <div class="flex gap-2 items-center justify font-semibold my-2">
                             <span class="text-gray-900 text-xs xl:text-lg w-3/6">Mã ưu đãi:</span>
-                            <span class="w-fit text-main text-xs text-left block w-1/6 cursor-pointer whitespace-nowrap" id="dropdownRadioHelperButton" data-dropdown-toggle="dropdownRadioHelper">Chọn mã của bạn</span>
+                            <span class="text-main text-xs text-right block w-1/6 cursor-pointer whitespace-nowrap underline" id="dropdownRadioHelperButton" data-dropdown-toggle="dropdownRadioHelper" data-dropdown-auto-close="true">{{ codeUse ? codeUse : 'Chọn mã của bạn' }}</span>
                             <div class="w-1/6"></div>
                             <div class="w-1/6"></div>
                             <!-- Dropdown menu -->
-                            <div id="dropdownRadioHelper" class="z-10 hidden rounded-xl shadow w-fit bg-white">
+                            <div id="dropdownRadioHelper" class="z-10 hidden rounded-xl shadow w-fit bg-white" >
                                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-2 p-2 border-[1px] shadow-lg rounded-lg border-main">
-                                    <div class="cursor-pointer group col-span-1 flex items-center h-full w-full" v-for="(code,index) in codes" :key="index">
+                                    <div @click="choiceMyCode(code)" data-dropdown-hide="dropdownRadioHelper" class="cursor-pointer group col-span-1 flex items-center h-full w-full" v-for="(code,index) in myCodes" :key="index">
                                         <div class="transition bg-main2 group-hover:bg-main r h-full w-full flex flex-col gap-1 items-center justify-center p-1 xl:p-2 rounded-xl border-[1px] border-orange-400">
                                             <div class="text-xs xl:text-lg font-bold">{{code.title}}
                                                 <span class="text-sm font-normal">({{code.for_order}})</span>
@@ -88,14 +88,22 @@
                         <hr>
                         <div class="flex gap-2 items-center justify font-semibold mt-2">
                             <span class="text-gray-900 text-xs xl:text-lg w-3/6">Số tiền bạn cần thanh toán:</span>
-                            <span class="text-main text-base xl:text-2xl text-left block w-1/6 text-right underline ">{{convertMoney(totalPriceInBag)}}</span>
+                            <span class="text-main text-base xl:text-2xl text-left block w-1/6 text-right underline ">{{convertMoney(priceFinal)}}</span>
                             <div class="w-1/6"></div>
                             <div class="w-1/6"></div>
                         </div>
                     </template>
+                    <template v-else>
+                        <div class="mb-5">
+                            <div class="text-lg text-main font-bold">
+                                Sắm ngay những món đồ cute để việc học trở nên thú vị và tràn đầy cảm hứng hơn!
+                            </div>
+                            <nuxt-link to="/" class="block cursor-pointer mt-5 px-4 py-2 text-sm font-medium text-center text-white border border-gray-200 rounded-lg focus:outline-none hover:opacity-50  focus:z-10 focus:ring-4 focus:ring-gray-100 focus:ring-gray-700 bg-gray-400  transition">Ok, let go !</nuxt-link>
+                        </div>
+                    </template>
                 </div>
-                <div class="col-span-1 xl:col-span-2 pl-0 xl:pl-8">
-                    <div class="text-gray-900 font-bold text-xl py-2">Thông tin người nhận</div>
+                <div class="col-span-1 xl:col-span-2 ml-0 xl:ml-8">
+                    <div class="text-gray-900 font-bold text-base p-2 bg-main2 rounded">Thông tin người nhận</div>
                     <form class="mb-6" @submit.prevent="handleSubmit">
                         <div class="mb-3">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Tên của bạn <span class="text-red-600">*</span></label>
@@ -150,7 +158,7 @@
                         :accountNumber="'108867652650'"
                         :accountName="`NGO VAN KHAI`"
                         :bankCode="'970415'"
-                        :amount="totalPriceInBag"
+                        :amount="priceFinal"
                         :addInfo="'THANH TOAN DON HANG'"
                     />
                 </div>
@@ -173,50 +181,30 @@ export default {
     },
     data() {
         return {
-            codes: [
+            myCodes: [
                 {
                     id: 1,
                     title: 'Mã giảm 10% giá trị đơn hàng',
                     for_order: 'áp dụng cho đơn từ 0 đồng',
                     end_date: '31/12/2024',
-                    code: 'KHXMAAF',
+                    code: 'GIANTBOY1',
                 },
                 {
                     id: 2,
-                    title: 'Mã giảm 10% giá trị đơn hàng',
+                    title: 'Mã giảm 5% giá trị đơn hàng',
                     for_order: 'áp dụng cho đơn từ 0 đồng',
                     end_date: '31/12/2024',
-                    code: 'KHXMAAF',
-                },
-                 {
-                    id: 1,
-                    title: 'Mã giảm 10% giá trị đơn hàng',
-                    for_order: 'áp dụng cho đơn từ 0 đồng',
-                    end_date: '31/12/2024',
-                    code: 'KHXMAAF',
+                    code: 'GIANTBOY2',
                 },
                 {
-                    id: 2,
-                    title: 'Mã giảm 10% giá trị đơn hàng',
+                    id: 3,
+                    title: 'Mã giảm 8% giá trị đơn hàng',
                     for_order: 'áp dụng cho đơn từ 0 đồng',
                     end_date: '31/12/2024',
-                    code: 'KHXMAAF',
-                },
-                {
-                    id: 1,
-                    title: 'Mã giảm 10% giá trị đơn hàng',
-                    for_order: 'áp dụng cho đơn từ 0 đồng',
-                    end_date: '31/12/2024',
-                    code: 'KHXMAAF',
-                },
-                {
-                    id: 2,
-                    title: 'Mã giảm 10% giá trị đơn hàng',
-                    for_order: 'áp dụng cho đơn từ 0 đồng',
-                    end_date: '31/12/2024',
-                    code: 'KHXMAAF',
+                    code: 'GIANTBOY3',
                 },
             ],
+            codeUse : null,
         };
     },
     computed: {
@@ -236,6 +224,28 @@ export default {
                 return 0;
             }
         },
+        priceFinal: function () { // Giá cuối sau khi áp dụng mã giảm
+            let result = this.totalPriceInBag + this.priceShip;
+            if (this.codeUse) {
+                let minusRate = 0;
+                switch (this.codeUse) {
+                    case 'GIANTBOY1':
+                        minusRate = 10;
+                        break;
+                    case 'GIANTBOY2':
+                        minusRate = 5;
+                        break;
+                    case 'GIANTBOY3':
+                        minusRate = 5;
+                        break;
+                
+                    default:
+                        break;
+                }
+                result = (this.totalPriceInBag - (this.totalPriceInBag*minusRate)/100).toFixed(2) + this.priceShip;
+            }
+            return Number(result);
+        },
     },
     mounted() {
         initFlowbite();
@@ -248,6 +258,12 @@ export default {
             } else {
                 console.error('Không tìm thấy component QrCode!');
             }
+        },
+        choiceMyCode(code) {
+            this.codeUse = code.code;
+            // Đóng popup lại ( cần xử lý lại)
+            document.querySelector('#dropdownRadioHelper').classList.add('hidden');
+            document.querySelector('#dropdownRadioHelper').classList.remove('block');
         },
     },
 }

@@ -57,6 +57,14 @@ export default {
             let mybag = localStorage.getItem("mybag");
             return mybag ? JSON.parse(mybag).data : [];
         },
+        removeItemBagLocalStorage(item) {
+            let listItem = this.getItemsBagInLocalStorage();
+            if (listItem.length) {
+                listItem = listItem.filter(one => one.id != item.id);     
+                localStorage.setItem("mybag", JSON.stringify({data: listItem}));   
+                this.$store.dispatch("SET_MY_BAG"); // Set lại giá trị trong store
+            }
+        },
         minusItemsBagInLocalStorage (item) {
             let listItem = this.getItemsBagInLocalStorage();
             if (listItem.length) {
